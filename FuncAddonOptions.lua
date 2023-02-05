@@ -10,6 +10,7 @@ local DEFAULT = {
     ["alpha"]       = 1,        -- overall opacity
     ["fadeout"]     = true,     -- fade out close to camera
     ["fadedist"]    = 7.5,      -- distance to start fading in m
+    ["showOwnIcon"]     = false,-- shows icon of the player itself
     -- custom
     ["customuse"]   = true,     -- show custom 3d icons
     ["save"]        = true,     -- store assigned custom icons
@@ -297,6 +298,7 @@ function OSI.CreateMenu( LAM )
             setFunc  = function( newValue ) OPTIONS.fadedist = newValue end,
             disabled = function() return not OPTIONS.fadeout end,
         },
+
     }
 
     local groupIconOptions = { }
@@ -467,15 +469,16 @@ function OSI.CreateMenu( LAM )
     -- RoleOptions( OSI.ALLY_COMPANION, "Companion" )
 
     -- ally icon options
-    RoleOptions( OSI.ALLY_ISOBEL, "Ember" )
-    RoleOptions( OSI.ALLY_EMBER,  "Isobel Veloise" )
-    RoleOptions( OSI.ALLY_BASTIAN, "Bastian Hallix" )
-    RoleOptions( OSI.ALLY_MIRRI,   "Mirri Elendis" )
     RoleOptions( OSI.ALLY_BANKER,  "Banker" )
     RoleOptions( OSI.ALLY_VENDOR,  "Merchant" )
     RoleOptions( OSI.ALLY_FENCE,   "Fence" )
     RoleOptions( OSI.ALLY_ARMORY,  "Armory Assistant" )
     RoleOptions( OSI.ALLY_DECON,   "Deconstruction Assistant" )
+    RoleOptions( OSI.ALLY_BASTIAN, "Bastian Hallix" )
+    RoleOptions( OSI.ALLY_MIRRI,   "Mirri Elendis" )
+    RoleOptions( OSI.ALLY_ISOBEL, "Isobel Veloise" )
+    RoleOptions( OSI.ALLY_EMBER,  "Ember" )
+
 
     local allyIconOptions = groupIconOptions
 
@@ -554,6 +557,14 @@ function OSI.CreateMenu( LAM )
             default  = not DEFAULT.ignore,
             getFunc  = function() return not OPTIONS.ignore end,
             setFunc  = function( newValue ) OPTIONS.ignore = not newValue end,
+        },
+        {
+        disabled = function() return OPTIONS.ignore end,
+        type     = "checkbox",
+        name     = "Show Own Icon",
+        default  = DEFAULT.showOwnIcon,
+        getFunc  = function() return OPTIONS.showOwnIcon end,
+        setFunc  = function( newValue ) OPTIONS.showOwnIcon = newValue end,
         },
         {
             type     = "checkbox",

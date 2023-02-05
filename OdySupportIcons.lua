@@ -260,7 +260,9 @@ end
 function OSI.UnitErrorCheck( unit )
     -- check if unit is valid
     if not DoesUnitExist( unit ) then return 1 end
-    if AreUnitsEqual( "player", unit ) then return 2 end
+    if AreUnitsEqual( "player", unit ) then 
+        if not OSI.GetOption( "showOwnIcon" ) then return 2 end
+    end
     if not IsUnitPlayer( unit ) then return 3 end
     if not IsUnitOnline( unit ) then return 4 end
     -- while in battlegrounds, instance check sometimes returns false
