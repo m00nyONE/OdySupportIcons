@@ -2,7 +2,7 @@ OSI = OSI or {}
 local OSI = OSI
 
 OSI.name 		= "OdySupportIcons"
-OSI.version 	= "|c00ff001.7.0|r"
+OSI.version 	= "|c00ff001.8.0|r"
 OSI.author 		= "|cff8534@Lamierina7|r & @|c00FF00ExoY|r94 (PC/EU)"
 OSI.show        = true
 OSI.debug       = false
@@ -473,7 +473,7 @@ function OSI.OnUpdate()
         end
 
         -- update group icons
-        for i = 1, GROUP_SIZE_MAX do
+        for i = 1, GROUP_SIZE_MAX do    
             local unit        = "group" .. i
             local displayName = GetUnitDisplayName( unit )
             local error       = OSI.UnitErrorCheck( unit )

@@ -6,8 +6,8 @@
 
 ## Title: OdySupportIcons
 ## Author: |cff8534@Lamierina7|r & @|c00FF00ExoY|r94 (PC/EU)
-## Version: 1.7.0
-## APIVersion: 101034
+## Version: 1.8.0
+## APIVersion: 101036
 ## SavedVariables: OSIStore
 ## DependsOn: LibAddonMenu-2.0>=31
 
