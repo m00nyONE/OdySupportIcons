@@ -81,6 +81,8 @@ local ALLIES = {
     [8995]  = OSI.ALLY_VENDOR,  -- peddler of prizes, the merchant
     [9745]  = OSI.ALLY_ARMORY,  -- ghrashgarog
     [10184] = OSI.ALLY_DECON,   -- giladil
+    [10617] = OSI.ALLY_DECON,   -- aderene
+    [10618] = OSI.ALLY_ARMORY,  -- zuqoth
 }
 
 -- companions by collectible id
