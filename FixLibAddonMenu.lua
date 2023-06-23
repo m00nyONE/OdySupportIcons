@@ -1,3 +1,5 @@
+--[[ 
+
 function OSI.FixLibAddonMenu( LAM )
     -- FIXME:
     -- hack #1 to fix duplicate name
@@ -92,3 +94,5 @@ function OSI.FixLibAddonMenu( LAM )
         end
     end
 end
+
+]]

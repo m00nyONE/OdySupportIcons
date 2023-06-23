@@ -675,7 +675,7 @@ function OSI.OnAddonLoaded( event, addonName )
     OSI.CreateUI()
     OSI.CreateUICustom()
     OSI.CreateIconPool()
-    OSI.FixLibAddonMenu( LAM )
+    --OSI.FixLibAddonMenu( LAM )
     OSI.CacheRestoreIcons()
 
     -- DEPRECATED
