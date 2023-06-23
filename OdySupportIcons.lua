@@ -401,7 +401,7 @@ function OSI.OnUpdate()
     if ally then
         for i = 1, MAX_PET_UNIT_TAGS do
             local unit = "playerpet" .. i
-            if DoesUnitExist( unit ) and IsUnitFriendlyFollower( unit ) and (GetUnitCaption( unit )  or GetUnitName(unit) == "Giladil the Ragpicker") then
+            if DoesUnitExist( unit ) and IsUnitFriendlyFollower( unit ) and (GetUnitCaption( unit )  or GetUnitName( unit ):find(".*Giladil.*")) then
                 local data = OSI.GetOption( ally )
                 if data.show then
                     tex = data.icon
