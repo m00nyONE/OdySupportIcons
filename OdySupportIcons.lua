@@ -37,6 +37,8 @@ OSI.ALLY_BASTIAN   = 60
 OSI.ALLY_MIRRI     = 61
 OSI.ALLY_EMBER     = 62
 OSI.ALLY_ISOBEL    = 63
+OSI.ALLY_SHARP     = 64
+OSI.ALLY_AZANDAR   = 65
 
 -- default color
 OSI.BASECOLOR = { 1, 1, 1 }
@@ -91,6 +93,8 @@ local COMPANIONS = {
     [9353] = OSI.ALLY_MIRRI,    -- mirri elendis
     [9911] = OSI.ALLY_EMBER,    -- ember
     [9912] = OSI.ALLY_ISOBEL,    -- isobel
+    [11113] = OSI.ALLY_SHARP, -- sharp as night (11113 / 11390)
+    [11114] = OSI.ALLY_AZANDAR, --azandar (11114 / 11391)
 }
 
 -- debug
