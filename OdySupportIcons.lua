@@ -2,8 +2,8 @@ OSI = OSI or {}
 local OSI = OSI
 
 OSI.name 		= "OdySupportIcons"
-OSI.version 	= "|c00ff001.10.0|r"
-OSI.author 		= "|cff8534@Lamierina7|r & @|c00FF00ExoY|r94 (PC/EU)"
+OSI.version 	= "|c00ff001.12.0|r"
+OSI.author 		= "|cff8534@Lamierina7|r & |c00FF00@ExoY94|r"
 OSI.show        = true
 OSI.debug       = false
 OSI.player      = string.lower( GetDisplayName() )
@@ -39,6 +39,9 @@ OSI.ALLY_EMBER     = 62
 OSI.ALLY_ISOBEL    = 63
 OSI.ALLY_SHARP     = 64
 OSI.ALLY_AZANDAR   = 65
+OSI.ALLY_TANLORIN  = 66 -- 12172, 12235
+OSI.ALLY_ZERITHVAR = 67 -- 12173, 12236
+
 
 -- default color
 OSI.BASECOLOR = { 1, 1, 1 }
@@ -62,13 +65,15 @@ OSI.custom      = {
 -- libraries
 local LAM = LibAddonMenu2
 
--- /script d( GetActiveCollectibleByType( COLLECTIBLE_CATEGORY_TYPE_ASSISTANT, GAMEPLAY_ACTOR_CATEGORY_PLAYER ) )
--- function OSI.FindAssitentIds()
---     for i = 1, GetTotalCollectiblesByCategoryType( COLLECTIBLE_CATEGORY_TYPE_ASSISTANT ) do
---         local id = GetCollectibleIdFromType( COLLECTIBLE_CATEGORY_TYPE_ASSISTANT, i )
---         d( "-> " .. GetCollectibleName( id ) .. " " .. id )
---     end
--- end
+--[[
+/script d( GetActiveCollectibleByType( COLLECTIBLE_CATEGORY_TYPE_ASSISTANT, GAMEPLAY_ACTOR_CATEGORY_PLAYER ) )
+function OSI.FindAssitentIds()
+    for i = 1, GetTotalCollectiblesByCategoryType( COLLECTIBLE_CATEGORY_TYPE_ASSISTANT ) do
+        local id = GetCollectibleIdFromType( COLLECTIBLE_CATEGORY_TYPE_ASSISTANT, i )
+        d( "-> " .. GetCollectibleName( id ) .. " " .. id )
+    end
+end
+]]
 
 -- allies by collectible id
 local ALLIES = {
@@ -81,10 +86,19 @@ local ALLIES = {
     [6378]  = OSI.ALLY_VENDOR,  -- fezez the merchant
     [8994]  = OSI.ALLY_BANKER,  -- baron jangleplume, the banker
     [8995]  = OSI.ALLY_VENDOR,  -- peddler of prizes, the merchant
-    [9745]  = OSI.ALLY_ARMORY,  -- ghrashgarog
-    [10184] = OSI.ALLY_DECON,   -- giladil
-    [10617] = OSI.ALLY_DECON,   -- aderene
-    [10618] = OSI.ALLY_ARMORY,  -- zuqoth
+    [9743]  = OSI.ALLY_BANKER,  -- factotum property steward
+    [9744]  = OSI.ALLY_VENDOR,  -- factotum commerce delegate
+    [9745]  = OSI.ALLY_ARMORY,  -- ghrashgarog, armory assustant
+    [10184] = OSI.ALLY_DECON,   -- giladil the ragpicker
+    [10617] = OSI.ALLY_DECON,   -- aderene, fargrave dregs dealer
+    [10618] = OSI.ALLY_ARMORY,  -- zuqoth, armory advisor
+    [11059] = OSI.ALLY_VENDOR,  -- hoarfrost, takubar trader
+    [11097] = OSI.ALLY_BANKER,  -- pyroclast, infernace conservator
+    [11876] = OSI.ALLY_ARMORY,  -- drinweth, valenwood armorer
+    [11877] = OSI.ALLY_DECON,   -- tzozabrar, dwarven deconstructor
+    [12413] = OSI.ALLY_BANKER,  -- eri, barking banker
+    [12414] = OSI.ALLY_VENDOR,  -- xyn, planar purveyor
+    [13063] = OSI.ALLY_DECON,	-- siluruz, realm craftsmaster
 }
 
 -- companions by collectible id
@@ -95,6 +109,8 @@ local COMPANIONS = {
     [9912] = OSI.ALLY_ISOBEL,    -- isobel
     [11113] = OSI.ALLY_SHARP, -- sharp as night (11113 / 11390)
     [11114] = OSI.ALLY_AZANDAR, --azandar (11114 / 11391)
+    [12172] = OSI.ALLY_TANLORIN, --12172, 12235
+    [12173] = OSI.ALLY_ZERITHVAR, -- 12173, 12236
 }
 
 -- debug

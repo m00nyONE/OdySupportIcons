@@ -159,6 +159,18 @@ local DEFAULT = {
         ["color"]    = { 1, 1, 1 },
         ["icon"]     = "esoui/art/mappins/activecompanion_pin.dds",
     },
+    [OSI.ALLY_TANLORIN]     = {
+        ["show"]     = true,
+        ["dead"]     = false,
+        ["color"]    = { 1, 1, 1 },
+        ["icon"]     = "esoui/art/mappins/activecompanion_pin.dds",
+    },
+    [OSI.ALLY_ZERITHVAR]     = {
+        ["show"]     = true,
+        ["dead"]     = false,
+        ["color"]    = { 1, 1, 1 },
+        ["icon"]     = "esoui/art/mappins/activecompanion_pin.dds",
+    },
 }
 
 local ICONS_GROUP = {
@@ -316,7 +328,7 @@ function OSI.CreateMenu( LAM )
     local groupIconOptions = { }
 
     local function RoleOptions( role, description )
-        local s = ( role == OSI.ROLE_LEAD or role == OSI.ALLY_BASTIAN or role == OSI.ALLY_MIRRI or role == OSI.ALLY_EMBER or role == OSI.ALLY_ISOBEL or role == OSI.ALLY_SHARP or role == OSI.ALLY_AZANDAR) and "" or "s"
+        local s = ( role == OSI.ROLE_LEAD or role == OSI.ALLY_BASTIAN or role == OSI.ALLY_MIRRI or role == OSI.ALLY_EMBER or role == OSI.ALLY_ISOBEL or role == OSI.ALLY_SHARP or role == OSI.ALLY_AZANDAR or role == OSI.ALLY_TANLORIN or role == OSI.ALLY_ZERITHVAR) and "" or "s"
 
         local roleOptions = {
             {
@@ -492,6 +504,8 @@ function OSI.CreateMenu( LAM )
     RoleOptions( OSI.ALLY_EMBER,  "Ember" )
     RoleOptions( OSI.ALLY_SHARP, "Sharp-as-Night" )
     RoleOptions( OSI.ALLY_AZANDAR,  "Azandar al-Cybiades" )
+    RoleOptions( OSI.ALLY_TANLORIN,  "Tanlorin" )
+    RoleOptions( OSI.ALLY_ZERITHVAR,  "Zerith-var" )
 
 
     local allyIconOptions = groupIconOptions
