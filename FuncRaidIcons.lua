@@ -86,7 +86,7 @@ function OSI.AssignRaidIconForUnit( displayName, texture )
     -- share raid icon with group
     if HodorReflexes then
         local data = DATA_BASE + unitId + textureId * 16
-        HodorReflexes.modules.share.SendCustomData( data, false )
+        --HodorReflexes.modules.share.SendCustomData( data, false )
     end
 end
 

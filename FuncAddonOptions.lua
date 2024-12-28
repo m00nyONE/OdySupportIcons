@@ -219,6 +219,7 @@ end
 
 function OSI.LoadOptions()
     OPTIONS = ZO_SavedVars:NewAccountWide( "OSIStore", 1, nil, DEFAULT )
+    OPTIONS.raidforce = false
 end
 
 function OSI.GetOption( key )
@@ -619,7 +620,7 @@ function OSI.CreateMenu( LAM )
         },
     }
 
-    -- raid icon options
+--[[     -- raid icon options
     local raidIconOptions = {
         {
 			type  = "description",
@@ -651,7 +652,7 @@ function OSI.CreateMenu( LAM )
             setFunc  = function( newValue ) OPTIONS.raidforce = newValue end,
             disabled = function() return not OPTIONS.raidallow end,
         },
-    }
+    } ]]
 
     -- world map options
     local worldmapOptions = {
@@ -880,11 +881,11 @@ function OSI.CreateMenu( LAM )
             name     = "|cfffacdUNIQUE ICONS|r",
             controls = uniqueIconOptions,
         },
-        {
+--[[         {
             type     = "submenu",
             name     = "|cfffacdRAID ICONS|r |cff0000BETA|r",
             controls = raidIconOptions,
-        },
+        }, ]]
         {
             type     = "submenu",
             name     = "|cfffacdWORLD MAP|r",

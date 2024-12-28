@@ -477,7 +477,8 @@ function OSI.OnUpdate()
     -- handle group icons
     if IsUnitGrouped( "player" ) then
         -- update icon config
-        icon3DConfig.raid   = OSI.GetOption( "raidallow" )
+        --icon3DConfig.raid   = OSI.GetOption( "raidallow" )
+        icon3DConfig.raid = false
         icon3DConfig.dead   = dead.show
         icon3DConfig.leader = OSI.GetOption( OSI.ROLE_LEAD ).show
         icon3DConfig.tank   = OSI.GetOption( OSI.ROLE_TANK ).show
