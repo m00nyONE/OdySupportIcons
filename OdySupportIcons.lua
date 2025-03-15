@@ -99,6 +99,7 @@ local ALLIES = {
     [12413] = OSI.ALLY_BANKER,  -- eri, barking banker
     [12414] = OSI.ALLY_VENDOR,  -- xyn, planar purveyor
     [13063] = OSI.ALLY_DECON,	-- siluruz, realm craftsmaster
+    [13066] = OSI.ALLY_VENDOR,  -- terilorne, dibellan freetrader
 }
 
 -- companions by collectible id
