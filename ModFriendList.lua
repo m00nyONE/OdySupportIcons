@@ -23,22 +23,17 @@ local function FriendListStopAnimation( anim )
 end
 
 function OSI.FriendListContextMenu()
-    -- create context menu for friends list
-    local onMouseUp = FRIENDS_LIST.FriendsListRow_OnMouseUp
-    function FRIENDS_LIST:FriendsListRow_OnMouseUp( control, button, upInside )
-        onMouseUp( self, control, button, upInside )
-        local unit = ZO_ScrollList_GetData( control )
-        if button == MOUSE_BUTTON_INDEX_RIGHT and upInside then
-            local name = string.lower( unit.displayName )
-            if OSI.special[name] then
-                AddMenuItem( "Change Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end )
-                AddMenuItem( "Remove Custom Icon", function() OSI.RemoveCustomIconFromUnit( name ) end )
-            else
-                AddMenuItem( "Assign Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end )
-            end
-            self:ShowMenu( control )
+    local LCM = LibCustomMenu 
+    local function AddItem(data)
+        local name = string.lower( data.displayName )
+        if OSI.special[name] and OSI.special[name].texture ~= OSI.users[name] then
+            AddCustomMenuItem( "Change Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end)
+            AddCustomMenuItem( "Remove Custom Icon", function() OSI.RemoveCustomIconFromUnit( name ) end)
+        else
+            AddCustomMenuItem( "Assign Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end)
         end
     end
+    LCM:RegisterGroupListContextMenu(AddItem, LCM.CATEGORY_LATE)  
 end
 
 function OSI.FriendListHook()
