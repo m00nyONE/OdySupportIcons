@@ -23,22 +23,17 @@ local function GuildRosterStopAnimation( anim )
 end
 
 function OSI.GuildRosterContextMenu()
-    -- create context menu for guild roster
-    local onMouseUp = GUILD_ROSTER_KEYBOARD.GuildRosterRow_OnMouseUp
-    function GUILD_ROSTER_KEYBOARD:GuildRosterRow_OnMouseUp( control, button, upInside )
-        onMouseUp( self, control, button, upInside )
-        local unit = ZO_ScrollList_GetData( control )
-        if button == MOUSE_BUTTON_INDEX_RIGHT and upInside then
-            local name = string.lower( unit.displayName )
-            if OSI.special[name] and OSI.special[name].texture ~= OSI.users[name] then
-                AddMenuItem( "Change Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end )
-                AddMenuItem( "Remove Custom Icon", function() OSI.RemoveCustomIconFromUnit( name ) end )
-            else
-                AddMenuItem( "Assign Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end )
-            end
-            self:ShowMenu( control )
+    local LCM = LibCustomMenu 
+    local function AddItem(data)
+        local name = string.lower( data.displayName )
+        if OSI.special[name] and OSI.special[name].texture ~= OSI.users[name] then
+            AddCustomMenuItem( "Change Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end)
+            AddCustomMenuItem( "Remove Custom Icon", function() OSI.RemoveCustomIconFromUnit( name ) end)
+        else
+            AddCustomMenuItem( "Assign Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end)
         end
     end
+    LCM:RegisterGroupListContextMenu(AddItem, LCM.CATEGORY_LATE)    
 end
 
 function OSI.GuildRosterHook()
