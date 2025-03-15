@@ -16,7 +16,6 @@ local gwConfig         = {
 local function GroupWindowStopAnimation( anim )
     if anim then
         anim.gfx = nil
-
         if anim.timeline:IsPlaying() then
             anim.timeline:Stop()
         end
@@ -24,43 +23,17 @@ local function GroupWindowStopAnimation( anim )
 end
 
 function OSI.GroupWindowContextMenu()
-    -- create context menu for group list
-    local onMouseUp = GROUP_LIST.GroupListRow_OnMouseUp
-    function GROUP_LIST:GroupListRow_OnMouseUp( control, button, upInside )
-        onMouseUp( self, control, button, upInside )
-        local unit = ZO_ScrollList_GetData( control )
-        if button == MOUSE_BUTTON_INDEX_RIGHT and upInside then
-            local allow = OSI.GetOption( "raidallow" )
-            local name  = string.lower( unit.displayName )
-            local show  = false
-            -- avoid changing icons assigned by raidlead
-            if ( not allow or not OSI.raidlead or not OSI.raidlead[name] or not HodorReflexes ) then
-                if OSI.special[name] and OSI.special[name].texture ~= OSI.users[name] then
-                    AddMenuItem( "Change Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end )
-                    AddMenuItem( "Remove Custom Icon", function() OSI.RemoveCustomIconFromUnit( name ) end )
-                else
-                    AddMenuItem( "Assign Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end )
-                end
-                show = true
-            end
-            -- add raidlead commands
-            if AreUnitsEqual( "player", GetGroupLeaderUnitTag() ) and allow and OSI.GetOption( "raidforce" ) and HodorReflexes then
-                if OSI.raidlead and OSI.raidlead[name] then
-                    AddMenuItem( "Change Raid Icon", function() OSI.ChooseRaidIconForUnit( name ) end )
-                    AddMenuItem( "Remove Raid Icon", function() OSI.RemoveRaidIconForUnit( name ) end )
-                else
-                    AddMenuItem( "Assign Raid Icon", function() OSI.ChooseRaidIconForUnit( name ) end )
-                end
-                if OSI.raidlead then
-                    AddMenuItem( "Remove all Raid Icons", function() OSI.RemoveAllRaidIcons() end )
-                end
-                show = true
-            end
-            if show then
-                self:ShowMenu( control )
-            end
+    local LCM = LibCustomMenu 
+    local function AddItem(data)
+        local name = string.lower( data.displayName )
+        if OSI.special[name] and OSI.special[name].texture ~= OSI.users[name] then
+            AddCustomMenuItem( "Change Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end)
+            AddCustomMenuItem( "Remove Custom Icon", function() OSI.RemoveCustomIconFromUnit( name ) end)
+        else
+            AddCustomMenuItem( "Assign Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end)
         end
     end
+    LCM:RegisterGroupListContextMenu(AddItem, LCM.CATEGORY_LATE)    
 end
 
 function OSI.GroupWindowHook()
