@@ -33,7 +33,7 @@ function OSI.GuildRosterContextMenu()
             AddCustomMenuItem( "Assign Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end)
         end
     end
-    LCM:RegisterGroupListContextMenu(AddItem, LCM.CATEGORY_LATE)    
+    LCM:RegisterGuildRosterContextMenu(AddItem, LCM.CATEGORY_LATE)    
 end
 
 function OSI.GuildRosterHook()

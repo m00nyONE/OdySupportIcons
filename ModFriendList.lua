@@ -33,7 +33,7 @@ function OSI.FriendListContextMenu()
             AddCustomMenuItem( "Assign Custom Icon", function() OSI.ChooseCustomIconForUnit( name ) end)
         end
     end
-    LCM:RegisterGroupListContextMenu(AddItem, LCM.CATEGORY_LATE)  
+    LCM:RegisterFriendsListContextMenu(AddItem, LCM.CATEGORY_LATE)  
 end
 
 function OSI.FriendListHook()
