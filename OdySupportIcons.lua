@@ -64,6 +64,7 @@ OSI.custom      = {
 
 -- libraries
 local LAM = LibAddonMenu2
+local LCI = LibCustomIcons
 
 --[[
 /script d( GetActiveCollectibleByType( COLLECTIBLE_CATEGORY_TYPE_ASSISTANT, GAMEPLAY_ACTOR_CATEGORY_PLAYER ) )
@@ -344,7 +345,7 @@ function OSI.OnUpdate()
 
     -- icon data
     local tex       = nil
-    local hodor     = nil
+    local lci     = nil
     local col       = OSI.BASECOLOR
     local size      = OSI.GetOption( "iconsize" )
     local offset    = OSI.GetOption( "offset" )
@@ -386,7 +387,7 @@ function OSI.OnUpdate()
             ctrl:SetAnchor( BOTTOM, OSI.win, CENTER, x, y )
 
             -- update icon data
-            OSI.UpdateIconData( icon, tex, col, hodor )
+            OSI.UpdateIconData( icon, tex, col, lci )
 
             -- calculate distance
             local dX, dY, dZ = wX - cX, wY - cY, wZ - cZ
@@ -510,7 +511,7 @@ function OSI.OnUpdate()
             -- only update if no errors occured
             if error == 0 then
                 -- retrieve texture, color and size
-                tex, col, size, hodor, offset = OSI.GetIconDataForPlayer( displayName, icon3DConfig, unit )
+                tex, col, size, lci, offset = OSI.GetIconDataForPlayer( displayName, icon3DConfig, unit )
                 -- only update if texture available
                 if tex then
                     UpdateUnit( unit, OSI.GetIconForPlayer( displayName ) )
@@ -594,9 +595,9 @@ function OSI.GetIconDataForPlayer( displayName, config, unit )
         return role.icon, role.color, role.usesize and role.size or size, nil, offset
     end
 
-    local reflex  = OSI.GetOption( "hodoruse" ) and HodorReflexes
-    local hodor   = reflex and HodorReflexes.users[displayName] or nil
-    local anim    = ( reflex and OSI.GetOption( "hodoranim" ) ) and HodorReflexes.anim.users[displayName] or nil
+    local reflex  = OSI.GetOption( "hodoruse" ) and LCI
+    local lciStatic   = reflex and LCI.GetStatic(displayName) or nil
+    local lciAnimated    = ( reflex and OSI.GetOption( "hodoranim" ) ) and LCI.GetAnimated(displayName) or nil
     local unique  = OSI.users[name]
     local special = OSI.special[name]
 
@@ -605,15 +606,15 @@ function OSI.GetIconDataForPlayer( displayName, config, unit )
         return special.texture, OSI.BASECOLOR, size, nil, offset
     end
 
-    -- handle unique or hodor icon
+    -- handle unique or LibCustomIcons icon
     if config.unique then
-        -- handle hodor with priority
+        -- handle LibCustomIcons with priority
         if OSI.GetOption( "hodorprio" ) then
-            if config.anim and anim then
-                return anim[1], OSI.BASECOLOR, size, anim, offset
+            if config.anim and lciAnimated then
+                return lciAnimated[1], OSI.BASECOLOR, size, anim, offset
             end
-            if hodor and hodor[3] then
-                return hodor[3], OSI.BASECOLOR, size, nil, offset
+            if lciStatic then
+                return lciStatic, OSI.BASECOLOR, size, nil, offset
             end
         end
 
@@ -622,12 +623,12 @@ function OSI.GetIconDataForPlayer( displayName, config, unit )
             return unique, OSI.BASECOLOR, size, nil, offset
         end
 
-        -- handle hodor
-        if config.anim and anim then
-            return anim[1], OSI.BASECOLOR, size, anim, offset
+        -- handle LibCustomIcons
+        if config.anim and lciAnimated then
+            return lciAnimated[1], OSI.BASECOLOR, size, lciAnimated, offset
         end
-        if hodor and hodor[3] then
-            return hodor[3], OSI.BASECOLOR, size, nil, offset
+        if lciStatic then
+            return lciStatic, OSI.BASECOLOR, size, nil, offset
         end
     end
 

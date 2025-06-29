@@ -13,6 +13,8 @@ local gwConfig         = {
     ["anim"]     = true,
 }
 
+local LCI = LibCustomIcons
+
 local function GroupWindowStopAnimation( anim )
     if anim then
         anim.gfx = nil
@@ -156,7 +158,7 @@ end
 
 function OSI.OverloadAIGW()
     if AIGW then
-        if OSI.GetOption( "gwuse" ) or OSI.GetOption( "gwunique" ) or OSI.GetOption( "gwdead" ) or OSI.GetOption( "gwroles" ) or ( OSI.GetOption( "raidallow" ) and HodorReflexes ) then
+        if OSI.GetOption( "gwuse" ) or OSI.GetOption( "gwunique" ) or OSI.GetOption( "gwdead" ) or OSI.GetOption( "gwroles" ) or ( OSI.GetOption( "raidallow" ) and LCI ) then
             if not aigwUpdateLeader then
                 aigwUpdateLeader  = AIGW.updateLeader
                 AIGW.updateLeader = function() end
