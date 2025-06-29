@@ -83,11 +83,6 @@ function OSI.AssignRaidIconForUnit( displayName, texture )
         end
     end
     SetRaidIconForUnit( unitId, textureId )
-    -- share raid icon with group
-    if HodorReflexes then
-        local data = DATA_BASE + unitId + textureId * 16
-        --HodorReflexes.modules.share.SendCustomData( data, false )
-    end
 end
 
 -- remove raid icon from unit and share with group
@@ -105,11 +100,6 @@ function OSI.RemoveRaidIconForUnit( displayName )
     if clear then
         OSI.raidlead = nil
     end
-    -- share with group
-    if HodorReflexes then
-        local data = DATA_BASE + unitId
-        HodorReflexes.modules.share.SendCustomData( data, false )
-    end
 end
 
 -- remove all raid icons currently assigned
@@ -117,11 +107,6 @@ function OSI.RemoveAllRaidIcons()
     OSI.raidlead = nil
     GROUP_LIST:RefreshData()
     ZO_WorldMap_RefreshGroupPins()
-
-    -- share with group
-    if HodorReflexes then
-        HodorReflexes.modules.share.SendCustomData( DATA_BASE, false )
-    end
 end
 
 -- handle callbacks from raid icon map pings
