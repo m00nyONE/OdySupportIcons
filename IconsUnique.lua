@@ -15,7 +15,7 @@ OSI.users = {
     ["@flozilla"]           = "odysupporticons/icons/schmeggd/flozilla.dds",
     -- twp
     ["@ebenerz-krieger"]    = "odysupporticons/icons/twp/ebenerz-krieger.dds",
-    ["@chayen"]             = "odysupporticons/icons/twp/chayen.dds",
+    ["@Chay'Kashet"]             = "odysupporticons/icons/twp/chayen.dds",
     ["@pelikito"]           = "odysupporticons/icons/twp/pelikito.dds",
     ["@shadowshintaro"]     = "odysupporticons/icons/twp/shadowshintaro.dds",
     ["@zom_head"]           = "odysupporticons/icons/twp/zom_head.dds",
