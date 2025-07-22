@@ -101,6 +101,7 @@ local ALLIES = {
     [12414] = OSI.ALLY_VENDOR,  -- xyn, planar purveyor
     [13063] = OSI.ALLY_DECON,	-- siluruz, realm craftsmaster
     [13066] = OSI.ALLY_VENDOR,  -- terilorne, dibellan freetrader
+    [13518] = OSI.ALLY_ARMORY,  -- voko, carnaval weapondancer
 }
 
 -- companions by collectible id
