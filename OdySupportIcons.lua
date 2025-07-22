@@ -670,11 +670,6 @@ function OSI.OnActivated()
     OSI.events:RegisterForEvent( OSI.name .. "DeathStateChanged", EVENT_UNIT_DEATH_STATE_CHANGED, function() GROUP_LIST:RefreshData(); ZO_WorldMap_RefreshGroupPins() end )
     OSI.events:AddFilterForEvent( OSI.name .. "DeathStateChanged", EVENT_UNIT_DEATH_STATE_CHANGED, REGISTER_FILTER_UNIT_TAG_PREFIX, "group" )
 
-    -- register callback for map pings
-    if HodorReflexes then
-        HodorReflexes.modules.share.cm:RegisterCallback( 'CustomData', OSI.CallbackForRaidIcon )
-    end
-
     OSI.OverloadAIGW()
     OSI.PrepareDisplayNameTable()
     OSI.CreateContextMenus()
