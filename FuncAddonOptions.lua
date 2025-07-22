@@ -17,9 +17,9 @@ local DEFAULT = {
     ["cache"]       = { },      -- custom icon cache
     -- unique
     ["ignore"]      = false,    -- show unique 3d icons
-    ["hodoruse"]    = true,     -- show hodor reflexes icons
-    ["hodoranim"]   = true,     -- show hodor reflexes animations
-    ["hodorprio"]   = false,    -- prioritize hodor reflexes over unique icons
+    ["hodoruse"]    = true,     -- show LibCustomIcons icons
+    ["hodoranim"]   = true,     -- show LibCustomIcons animations
+    ["hodorprio"]   = false,    -- prioritize LibCustomIcons over unique icons
     -- raid
     ["raidallow"]   = false,    -- show raid icons assigned by group leader
     ["raidforce"]   = false,    -- show raid icon context menu for group leader
@@ -563,7 +563,7 @@ function OSI.CreateMenu( LAM )
         },
     }
 
-    -- unique and hodor icon options
+    -- unique and LibCustomIcons icon options
     local uniqueIconOptions = {
         {
 			type  = "description",
@@ -575,7 +575,7 @@ function OSI.CreateMenu( LAM )
 		},
         {
 			type = "description",
-            text = "Requires |cffff00Hodor Reflexes|r to be active if you want to show the icons and animations provided by this addon.\n",
+            text = "Requires |cffff00LibCustomIcons|r to be active if you want to show the icons and animations provided by this addon.\n",
         },
         {
             type  = "divider",
@@ -597,14 +597,14 @@ function OSI.CreateMenu( LAM )
         },
         {
             type     = "checkbox",
-            name     = "Use Hodor Reflexes Icons",
+            name     = "Use LibCustomIcons Icons",
             default  = DEFAULT.hodoruse,
             getFunc  = function() return OPTIONS.hodoruse end,
             setFunc  = function( newValue ) OPTIONS.hodoruse = newValue; OSI.RefreshData() end,
         },
         {
             type     = "checkbox",
-            name     = "Use Hodor Reflexes Animations",
+            name     = "Use LibCustomIcons Animations",
             default  = DEFAULT.hodoranim,
             getFunc  = function() return OPTIONS.hodoranim end,
             setFunc  = function( newValue ) OPTIONS.hodoranim = newValue; OSI.RefreshData() end,
@@ -612,7 +612,7 @@ function OSI.CreateMenu( LAM )
         },
         {
             type     = "checkbox",
-            name     = "Prioritize Hodor Reflexes over unique Icons",
+            name     = "Prioritize LibCustomIcons over unique Icons",
             default  = DEFAULT.hodorprio,
             getFunc  = function() return OPTIONS.hodorprio end,
             setFunc  = function( newValue ) OPTIONS.hodorprio = newValue; OSI.RefreshData() end,
@@ -628,7 +628,7 @@ function OSI.CreateMenu( LAM )
         },
         {
 			type = "description",
-            text = "Experimental feature allowing group leaders to force raid specific icons on group members. |cffff00Hodor Reflexes|r is required to share the icon information amongst the group.",
+            text = "Experimental feature allowing group leaders to force raid specific icons on group members. |cffff00LibCustomIcons|r is required to share the icon information amongst the group.",
 		},
         {
 			type = "description",
