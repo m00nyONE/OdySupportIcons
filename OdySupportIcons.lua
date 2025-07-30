@@ -612,7 +612,7 @@ function OSI.GetIconDataForPlayer( displayName, config, unit )
         -- handle LibCustomIcons with priority
         if OSI.GetOption( "hodorprio" ) then
             if config.anim and lciAnimated then
-                return lciAnimated[1], OSI.BASECOLOR, size, anim, offset
+                return lciAnimated[1], OSI.BASECOLOR, size, lciAnimated, offset
             end
             if lciStatic then
                 return lciStatic, OSI.BASECOLOR, size, nil, offset
